@@ -1,0 +1,11 @@
+.pagination {
+    background-color: brown;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    border: 1px solid black;
+}
+
+.number {
+    background-color: brown;
+}

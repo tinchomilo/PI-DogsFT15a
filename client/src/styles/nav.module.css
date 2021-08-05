@@ -1,0 +1,22 @@
+.nav {
+    /* display: flex;. */
+    align-items: center;
+    background: #187795;
+    flex-direction: row;
+    font-size: 18px;  
+    height: 30px;
+    padding: 0.5rem;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    width: 100%;
+}
+.conteiner {
+    color:#e8e9ee;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    font-weight: bold;
+    font-style: italic; 
+    align-items: center;
+    justify-content: space-evenly;
+    text-decoration: none;
+}

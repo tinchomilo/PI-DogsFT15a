@@ -1,0 +1,24 @@
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import { DogDetail } from '../components/detail/DogDetail'
+import { DogCreated } from '../components/dogCreated/DogCreated'
+import { Home } from '../components/home/Home'
+import { NavBar } from '../components/nav/NavBar'
+
+
+export const AppRouter = () => {
+    return (
+        <div>
+            <NavBar />
+                <>
+                    <Switch>
+                        <Route exact path="/home" component={ Home } />
+                        <Route path="/add" component={ DogCreated } />
+                        <Route path="/detail" component={ DogDetail } />
+                    </Switch>
+
+                </>
+            
+        </div>
+    )
+}
