@@ -14,7 +14,7 @@ export const AppRouter = () => {
                     <Switch>
                         <Route exact path="/home" component={ Home } />
                         <Route path="/add" component={ DogCreated } />
-                        <Route path="/detail" component={ DogDetail } />
+                        <Route path="/detail/:id" component={ DogDetail } />
                     </Switch>
 
                 </>
