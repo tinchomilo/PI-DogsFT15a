@@ -17,6 +17,7 @@ export const DogCreated = ( { history } ) => {
 
     }
     const [values, setValues] = useState(initialState)
+    const [namesTemp, setNamesTemp] = useState([])
    
 
     const handleChange = ( e ) => {
@@ -27,13 +28,30 @@ export const DogCreated = ( { history } ) => {
     }
 
     const handleSelect = ( e ) => {
-        
+        let index = e.target.selectedIndex
+        setNamesTemp( (names) => [...names, e.target.options[index].text] )
         setValues( values => ({
             ...values,
             temperament: [...values.temperament, e.target.value]
             
         }))
     }
+
+    // const handleClick = ( e ) => {
+        
+    //     setNamesTemp( namesTemp.filter( elem => elem !== e ))
+    // }
+
+    const handleReturn = () => {
+        history.goBack()
+    }
+
+    const handleSubmit = ( e ) => {
+        e.preventDefault()
+
+    }
+
+
     useEffect(() => {
         dispatch( getTemperaments() ) 
     }, [dispatch])
@@ -44,7 +62,7 @@ export const DogCreated = ( { history } ) => {
             <h1>Crea tu raza</h1>            
             <h3>{ values.temperament}</h3>
             
-            <form>
+            <form onSubmit={ handleSubmit }>
                 <div>
                 <label>Nombre:</label>
                 <input  
@@ -91,12 +109,26 @@ export const DogCreated = ( { history } ) => {
                         onChange={ handleSelect } >
                             {
                                 temperaments?.map( elem => (
-                                    <option key ={ elem.id } value={ elem.id }>{ elem.name}</option>
+                                    <option key ={ elem.id } value={ elem.id }>{ elem.name }</option>
                                 ))
                             }                               
                     </select>                     
+                    <ul>
+                        {
+                            namesTemp?.map( ( elem, i ) => (
+                                <div key={ i }>
+                                    <p>{ elem }</p>
+                                    {/* <button onClick={ handleClick } >X</button> */}
+                                </div>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <button type='submit'>Crear!!</button>                    
                 </div>
             </form>
+            <button onClick={ handleReturn }>Regresar</button>
         </div>
     )
 }
