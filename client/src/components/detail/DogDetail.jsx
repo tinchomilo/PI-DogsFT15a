@@ -18,7 +18,7 @@ export const DogDetail = ( { history } ) => {
         setLoading( true )
     }, [dispatch])
 
-    const handleReturn = ( e ) => {
+    const handleReturn = () => {
         history.goBack()
     }
 

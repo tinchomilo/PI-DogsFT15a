@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import { DogDetail } from '../components/detail/DogDetail'
 import { DogCreated } from '../components/dogCreated/DogCreated'
 import { Home } from '../components/home/Home'
@@ -15,10 +15,11 @@ export const AppRouter = () => {
                         <Route exact path="/home" component={ Home } />
                         <Route path="/add" component={ DogCreated } />
                         <Route path="/detail/:id" component={ DogDetail } />
+
+                        <Redirect to='/home' />
                     </Switch>
 
-                </>
-            
+                </>            
         </div>
     )
 }

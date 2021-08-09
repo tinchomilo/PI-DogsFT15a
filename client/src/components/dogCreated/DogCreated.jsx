@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { addDog } from '../../redux/actions/addDog'
 import { getTemperaments } from '../../redux/actions/getTemperaments'
-
 
 
 export const DogCreated = ( { history } ) => {
@@ -10,14 +10,18 @@ export const DogCreated = ( { history } ) => {
     const dispatch = useDispatch()
     const initialState = {
         name: '',
-        height: '',
-        weight: '',
-        lifeSpan: '',
+        heightMin: '',
+        heightMax: '',
+        weightMin: '',
+        weightMax: '',
+        yearsMin: '',
+        yearsMax: '',
         temperament: [],
-
     }
     const [values, setValues] = useState(initialState)
     const [namesTemp, setNamesTemp] = useState([])
+    const [errors, setErrors] = useState(false)
+    const [succes, setSucces] = useState(false)
    
 
     const handleChange = ( e ) => {
@@ -32,15 +36,10 @@ export const DogCreated = ( { history } ) => {
         setNamesTemp( (names) => [...names, e.target.options[index].text] )
         setValues( values => ({
             ...values,
-            temperament: [...values.temperament, e.target.value]
+            temperament: [...values.temperament, Number(e.target.value)]
             
         }))
     }
-
-    // const handleClick = ( e ) => {
-        
-    //     setNamesTemp( namesTemp.filter( elem => elem !== e ))
-    // }
 
     const handleReturn = () => {
         history.goBack()
@@ -48,20 +47,26 @@ export const DogCreated = ( { history } ) => {
 
     const handleSubmit = ( e ) => {
         e.preventDefault()
-
+        if( values.name && values.heightMin && values.heightMax && 
+            values.weightMin && values.weightMax && values.temperament) {
+            dispatch( addDog( values ) )
+            setErrors( false )
+            setSucces( true )
+            setValues(initialState)
+            setNamesTemp([])
+        } else {
+            setSucces( false )
+            setErrors( true )
+        }
     }
-
 
     useEffect(() => {
         dispatch( getTemperaments() ) 
     }, [dispatch])
 
-
     return (
         <div>
-            <h1>Crea tu raza</h1>            
-            <h3>{ values.temperament}</h3>
-            
+            <h1>Crea tu raza</h1>                        
             <form onSubmit={ handleSubmit }>
                 <div>
                 <label>Nombre:</label>
@@ -72,33 +77,67 @@ export const DogCreated = ( { history } ) => {
                     onChange={ handleChange }
                     autoComplete='off'
                     />
+                    {
+                        errors.name && 
+                        <p className='error'>{ errors.name }</p>                        
+                    }
                 </div>
                 <div>
-                    <label>Altura: </label>
+                    <label>Altura min: </label>
                     <input 
                         type='text'
-                        name='height'
-                        value={ values.height }
+                        name='heightMin'
+                        value={ values.heightMin }
                         onChange={ handleChange }
                         autoComplete='off'
                         />
                 </div>
                 <div>
-                    <label>Peso: </label>
+                    <label>Altura max: </label>
                     <input 
                         type='text'
-                        name='weight'
-                        value={ values.weight }
+                        name='heightMax'
+                        value={ values.heightMax }
                         onChange={ handleChange }
                         autoComplete='off'
                         />
                 </div>
                 <div>
-                    <label>años de vida: </label>
+                    <label>Peso min: </label>
                     <input 
                         type='text'
-                        name='lifeSpan'
-                        value={ values.lifeSpan }
+                        name='weightMin'
+                        value={ values.weightMin }
+                        onChange={ handleChange }
+                        autoComplete='off'
+                        />
+                </div>
+                <div>
+                    <label>Peso max: </label>
+                    <input 
+                        type='text'
+                        name='weightMax'
+                        value={ values.weightMax }
+                        onChange={ handleChange }
+                        autoComplete='off'
+                        />
+                </div>
+                <div>
+                    <label>años de vida min: </label>
+                    <input 
+                        type='text'
+                        name='yearsMin'
+                        value={ values.yearsMin }
+                        onChange ={ handleChange }
+                        autoComplete='off'
+                        /> 
+                </div>
+                <div>
+                    <label>años de vida max: </label>
+                    <input 
+                        type='text'
+                        name='yearsMax'
+                        value={ values.yearsMax }
                         onChange ={ handleChange }
                         autoComplete='off'
                         /> 
@@ -112,14 +151,14 @@ export const DogCreated = ( { history } ) => {
                                     <option key ={ elem.id } value={ elem.id }>{ elem.name }</option>
                                 ))
                             }                               
-                    </select>                     
+                    </select>                                       
                     <ul>
-                        {
-                            namesTemp?.map( ( elem, i ) => (
-                                <div key={ i }>
-                                    <p>{ elem }</p>
-                                    {/* <button onClick={ handleClick } >X</button> */}
-                                </div>
+                    <h3>Temperamentos cargados: </h3>
+                        {                            
+                            namesTemp?.map( ( elem, i ) => (                                                                
+                                    <div key={ i }>                                    
+                                        <p>{ elem }</p>
+                                    </div>                         
                             ))
                         }
                     </ul>
@@ -128,6 +167,12 @@ export const DogCreated = ( { history } ) => {
                     <button type='submit'>Crear!!</button>                    
                 </div>
             </form>
+            {
+                succes ? <h2>'Creacion exitosa'</h2> : null
+            }
+            {
+                errors ? <h2>'Te faltan completar las opciones </h2> : null
+            }
             <button onClick={ handleReturn }>Regresar</button>
         </div>
     )

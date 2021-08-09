@@ -1,9 +1,8 @@
 .nav {
-    /* display: flex;. */
     align-items: center;
     background: #187795;
     flex-direction: row;
-    font-size: 18px;  
+    font-size: 22px;  
     height: 30px;
     padding: 0.5rem;
     text-decoration: none;

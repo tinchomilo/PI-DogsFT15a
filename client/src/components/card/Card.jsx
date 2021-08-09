@@ -2,20 +2,24 @@ import React from 'react'
 import imgDefault from '../../resources/imgFoto.jpg';
 import { Link } from 'react-router-dom'
 
+import style from '../../styles/card.module.css'
+
 
 export const Card = ( { name, img, temperament, temperaments, id } ) => {
     return (
-        <div>
+        <div className={ style.card }>
+            <h3>{name}</h3> 
             <Link to={ `/detail/${ id }`}>
-            <h3>{name}</h3>
+            <img 
+                src={ img ? img : imgDefault } 
+                alt='imagen raza' width="150" height="150"/>
+            <div className={ style.names }>                                              
+                    <p>Temperamento: { temperament ? temperament.map( elem => elem + ', ') :
+                            temperaments?.map( elem => elem.name + ', ') 
+                        }
+                    </p>                
+            </div>
             </Link>
-            <h3>Temperamento: { temperament ? temperament.map( elem => elem + ', ') :
-                     temperaments?.map( elem => elem.name + ', ') 
-                }
-            </h3>
-            <>
-                <img src={ img ? img : imgDefault } alt='imagen raza' width="300" height="300"/>
-            </>
         </div>
     )
 }

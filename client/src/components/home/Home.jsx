@@ -6,7 +6,6 @@ import { orderByName } from '../../redux/actions/orderByName';
 import { filterCreated } from '../../redux/actions/filterCreated';
 import { filterByTemperament } from '../../redux/actions/filterTemperament';
 import { Paginado } from '../paginado/Paginado';
-
 import { Card } from '../card/Card';
 import { Search } from '../search/Search';
 
@@ -62,39 +61,47 @@ export const Home = () => {
     }
 
     return (
-        <div>
-            <select onChange={ handleSort }>
-                <option value='asc'>Ascendente</option>
-                <option value='des'>Descendente</option>
-            </select>
+        <div className={ style.conteiner }>
+            <div className={ style.filters }>
 
-            <select onChange={ handleFilterCreated }>
-                <option value='all'>Todos</option>
-                <option value='created'>Creados</option>
-                <option value='api'>De la Api</option>                
-            </select>
+                <label>Orden</label>
+                <select onChange={ handleSort } className={ style.orden }>
+                    <option value='asc'>Ascendente</option>
+                    <option value='des'>Descendente</option>
+                </select>
 
-            <select onChange={ handleFilterTemperament}>
-                <option value='all'>Todos</option>
-                {
-                    temperaments?.map( elem => (
-                        <option value={ elem.name } key={ elem.id }>{ elem.name }</option>
-                    ))
-                }
-            </select>
-            <button onClick={ handleClick }>
-                Recargar razas
-            </button>
+                <label>Origen</label>
+                <select onChange={ handleFilterCreated } className={ style.origen }>
+                    <option value='all'>Todos</option>
+                    <option value='created'>Creados</option>
+                    <option value='api'>De la Api</option>                
+                </select>
+
+                <label>Temperamento</label>
+                <select onChange={ handleFilterTemperament} className={ style.temps }>
+                    <option value='all'>Todos</option>
+                    {
+                        temperaments?.map( elem => (
+                            <option value={ elem.name } key={ elem.id }>{ elem.name }</option>
+                        ))
+                    }
+                </select>
+
+                <button onClick={ handleClick } className={ style.btn }>
+                    Recargar razas
+                </button>
+            </div>
 
             <Search />
+
+            <h1 className={ style.title }>The DoggyApp</h1>
 
             <Paginado 
                 dogsPerPage={ dogsPerPage }
                 allDogsLoaded={ dogsLoaded.length }
                 paginado={ paginado } />
 
-            <h1 className={ style.title }>The DogsApp</h1>
-            <div>
+            <div className={ style.grilla }>
                 {
                     currentDogs?.map( ( dog ) => (
                         <Card key={ dog.id }

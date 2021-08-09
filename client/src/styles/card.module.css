@@ -1,0 +1,51 @@
+ .card {
+    font-style: italic;
+    align-items: center;
+    background: #2989bd;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 280px;
+    justify-content: center;
+    margin: 5px 5px;
+    overflow: hidden;
+    opacity: 0.9;
+    width: 300px;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card:hover {
+    background-color: rgb(111, 185, 195);
+    transition: background-color .2s;
+ }
+ 
+ .names {
+     align-items: center;
+     color: #0f5064;
+     display: flex;
+     flex-direction: column;
+     font-size: 20px;
+     font-style: italic;
+     justify-content: center;
+     text-align: center;
+     
+ }
+ 
+ .names a {
+     text-decoration: none;
+ }
+ 
+ .names p {
+     color:#040b1f;
+     font-size: medium;
+     margin-block-end: 0px;
+     margin-block-start: 0px;
+ }
+ 
+ .names span {
+  color:#040b1f;   
+ } 
