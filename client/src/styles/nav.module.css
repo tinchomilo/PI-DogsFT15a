@@ -10,12 +10,14 @@
     width: 100%;
 }
 .conteiner {
-    color:#e8e9ee;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    display: flex;
-    font-weight: bold;
-    font-style: italic; 
     align-items: center;
+    color:#e8e9ee;
+    display: flex;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic; 
+    font-weight: bold;
     justify-content: space-evenly;
+}
+.conteiner a {
     text-decoration: none;
 }

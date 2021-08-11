@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addDog } from '../../redux/actions/addDog'
 import { getTemperaments } from '../../redux/actions/getTemperaments'
 
+import style from '../../styles/dogCreated.module.css';
+
 
 export const DogCreated = ( { history } ) => {
 
@@ -18,11 +20,11 @@ export const DogCreated = ( { history } ) => {
         yearsMax: '',
         temperament: [],
     }
+
     const [values, setValues] = useState(initialState)
     const [namesTemp, setNamesTemp] = useState([])
     const [errors, setErrors] = useState(false)
-    const [succes, setSucces] = useState(false)
-   
+    const [succes, setSucces] = useState(false)   
 
     const handleChange = ( e ) => {
         e.preventDefault()
@@ -36,8 +38,7 @@ export const DogCreated = ( { history } ) => {
         setNamesTemp( (names) => [...names, e.target.options[index].text] )
         setValues( values => ({
             ...values,
-            temperament: [...values.temperament, Number(e.target.value)]
-            
+            temperament: [...values.temperament, Number(e.target.value)]            
         }))
     }
 
@@ -65,11 +66,11 @@ export const DogCreated = ( { history } ) => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className={ style.grilla }>
             <h1>Crea tu raza</h1>                        
-            <form onSubmit={ handleSubmit }>
+            <form className={ style.formAdd }onSubmit={ handleSubmit }>
                 <div>
-                <label>Nombre:</label>
+                <label>Nombre: </label>
                 <input  
                     type='text'
                     name='name'
@@ -146,6 +147,7 @@ export const DogCreated = ( { history } ) => {
                     <label>Temperamentos: </label>
                     <select 
                         onChange={ handleSelect } >
+                            <option value='all'>Todos</option>
                             {
                                 temperaments?.map( elem => (
                                     <option key ={ elem.id } value={ elem.id }>{ elem.name }</option>
@@ -154,6 +156,7 @@ export const DogCreated = ( { history } ) => {
                     </select>                                       
                     <ul>
                     <h3>Temperamentos cargados: </h3>
+                    <div className={ style.temps} >
                         {                            
                             namesTemp?.map( ( elem, i ) => (                                                                
                                     <div key={ i }>                                    
@@ -161,19 +164,20 @@ export const DogCreated = ( { history } ) => {
                                     </div>                         
                             ))
                         }
+                        </div>
                     </ul>
                 </div>
-                <div>
+                <div className={ style.buttons }>
                     <button type='submit'>Crear!!</button>                    
+                    <button onClick={ handleReturn }>Regresar</button>
                 </div>
             </form>
             {
-                succes ? <h2>'Creacion exitosa'</h2> : null
+                succes ? <h2>Creacion exitosa</h2> : null
             }
             {
-                errors ? <h2>'Te faltan completar las opciones </h2> : null
-            }
-            <button onClick={ handleReturn }>Regresar</button>
+                errors ? <h2>Te faltan completar datos </h2> : null
+            }           
         </div>
     )
 }

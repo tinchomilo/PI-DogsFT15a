@@ -10,14 +10,14 @@ import { Card } from '../card/Card';
 import { Search } from '../search/Search';
 
 import style from '../../styles/home.module.css'
+
+
 export const Home = () => {
     
     const dogsLoaded = useSelector( state => state.dogsLoaded )
     const temperaments = useSelector( state => state.temperaments )
-
-    //necesito el state de temperamentos 
     const dispatch = useDispatch()
-
+ 
     useEffect(() => {
         dispatch( getAllDogs() )
         dispatch( getTemperaments() )
@@ -44,30 +44,30 @@ export const Home = () => {
     //filtro creados, de la api y todos
     const handleFilterCreated = ( e ) => {
         dispatch( filterCreated( e.target.value ) )
-
     }
 
     //filtro por temperamento
     const handleFilterTemperament = ( e ) => {
         console.log(e.target.value)
         dispatch( filterByTemperament( e.target.value ) )
-
     }
 
     //recargo las razas
     const handleClick = ( e ) => {
         e.preventDefault()
         dispatch( getAllDogs() )
+        setCurrentPage( 1 )
     }
 
     return (
         <div className={ style.conteiner }>
             <div className={ style.filters }>
-
                 <label>Orden</label>
                 <select onChange={ handleSort } className={ style.orden }>
                     <option value='asc'>Ascendente</option>
                     <option value='des'>Descendente</option>
+                    <option value='ascWeight'>Menor peso</option>
+                    <option value='desWeight'>Mayor peso</option>
                 </select>
 
                 <label>Origen</label>
@@ -93,8 +93,6 @@ export const Home = () => {
             </div>
 
             <Search />
-
-            <h1 className={ style.title }>The DoggyApp</h1>
 
             <Paginado 
                 dogsPerPage={ dogsPerPage }

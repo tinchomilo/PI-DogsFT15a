@@ -4,6 +4,7 @@ import { searchByName } from '../../redux/actions/searchByName';
 
 import style from '../../styles/search.module.css'
 
+
 export const Search = () => {
 
     const dispatch = useDispatch()

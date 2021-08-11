@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const getAllDogs = () => {
     return async ( dispatch ) => {
+        
         try {
             let dogs = await axios.get("http://localhost:3001/dogs")
             return dispatch({

@@ -1,16 +1,16 @@
  .card {
-    font-style: italic;
     align-items: center;
     background: #2989bd;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    font-style: italic;
     height: 280px;
     justify-content: center;
     margin: 5px 5px;
-    overflow: hidden;
     opacity: 0.9;
+    overflow: hidden;
     width: 300px;
 }
 
@@ -31,8 +31,7 @@
      font-size: 20px;
      font-style: italic;
      justify-content: center;
-     text-align: center;
-     
+     text-align: center;     
  }
  
  .names a {

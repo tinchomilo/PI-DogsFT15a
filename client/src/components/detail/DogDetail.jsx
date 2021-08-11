@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { getDetails } from '../../redux/actions/getDetails'
 
 import imgDefault from '../../resources/imgFoto.jpg';
+import style from '../../styles/dogDetail.module.css';
 
 
 export const DogDetail = ( { history } ) => {
@@ -23,10 +24,10 @@ export const DogDetail = ( { history } ) => {
     }
 
     return (
-        <>
+        < div className={style.contenedor }>
             { loading ?
-            <div>
-                <div>
+            <div className={ style.view }>
+                <div className={ style.title }>
                     <h1>{ detail[0]?.name }</h1>
                 </div>
                 <ul>
@@ -53,9 +54,9 @@ export const DogDetail = ( { history } ) => {
                 : <div>Loading</div>
             }         
             <div>
-                <button onClick={ handleReturn }>Regresar</button>
+                <button className={ style.btn } onClick={ handleReturn }>Regresar</button>
             </div>
             
-        </>
+        </div>
     )
 }

@@ -1,4 +1,4 @@
-import { FILTER_CREATED, FILTER_TEMPERAMENT, GET_ALL_DOGS, GET_DETAILS, GET_TEMPERAMENTS, ORDER_BY_NAME, SEARCH_BY_NAME } from '../actions/index'
+import { ADD_DOG, FILTER_CREATED, FILTER_TEMPERAMENT, GET_ALL_DOGS, GET_DETAILS, GET_TEMPERAMENTS, ORDER_BY_NAME, SEARCH_BY_NAME } from '../actions/index'
 
 const initialState = {
     dogsLoaded: [],
@@ -33,8 +33,18 @@ function rootReducer( state = initialState, action ) {
                 ...state,
                 detail: action.payload
             }
+        
+        case ADD_DOG: 
+            return state;
 
         case ORDER_BY_NAME:
+            // buffer lo utlilizo para convertir a numero el mayor peso que puede tener un perro para poder hacer la comparacion
+            let buffer = state.dogsLoaded.map( elem => {
+                return {
+                    ...elem,
+                    weight: Number(elem.weight?.split('-')[1])
+                }
+                 })
             let sortedArr = action.payload === 'asc' ?
                 state.dogsLoaded.sort( function (a, b) {
                     if(a.name > b.name ){
@@ -45,6 +55,7 @@ function rootReducer( state = initialState, action ) {
                     }
                     return 0;
                 }) : 
+                action.payload === 'des' ?
                 state.dogsLoaded.sort( function (a, b) {
                     if(a.name > b.name ){
                         return -1;
@@ -53,8 +64,27 @@ function rootReducer( state = initialState, action ) {
                         return 1;
                     }
                     return 0;
+                }) : 
+                action.payload === 'ascWeight' ?                    
+                buffer.sort( function (a, b) {
+                    if(a.weight > b.weight ){
+                        return 1;
+                    }
+                    if( b.weight > a.weight ){
+                        return -1;
+                    }
+                    return 0;
+                }) : 
+                buffer.sort( function (a, b) {
+                    if(a.weight > b.weight ){
+                        return -1;
+                    }
+                    if( b.weight > a.weight ){
+                        return 1;
+                    }
+                    return 0;
                 }) 
-            return {
+                    return {
                 ...state,
                 dogsLoaded: sortedArr
             }
@@ -75,7 +105,6 @@ function rootReducer( state = initialState, action ) {
                 ...state,
                 dogsLoaded: temperamentsFiltered
             }
-
 
         default:
             return state;

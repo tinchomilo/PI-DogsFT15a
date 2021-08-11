@@ -1,13 +1,13 @@
 .pagination {
-    background-color: #034748;
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
+    background-color: #0a84b4;
     border: 1px solid black;
+    display: flex;
     font-size: 20px;
     font-weight: bold;
+    justify-content: space-around;
+    list-style: none;
 }
 
 .number {
-    background-color: #034748;
+    background-color: #0a84b4;
 }

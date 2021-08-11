@@ -1,0 +1,91 @@
+.grilla {
+    align-items: center;
+    background-image: url(../resources/add.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;    
+    height: 800px;
+}
+
+.grilla h1 {
+    font-size: 50px;
+    font-style: italic;
+    margin-block-end: 25px;
+}
+
+.grilla h2 {
+    color:rgb(211, 3, 3);
+    font-size: 40px;
+    font-style: italic;
+    font-weight: bold;
+    
+}
+
+.grilla label {
+    color:#000000;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.grilla select {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    padding: 0.375rem 0.75rem;
+    width: 225px;
+}
+
+.formAdd {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+}
+
+.formAdd input{
+    margin-bottom: 20px;
+    width: 200px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 223px;
+}
+
+.buttons button {
+    background-color: #e9ecef;
+    border-color: #0d6efd;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;  
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding: 0.375rem 0.75rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.buttons button:hover {    
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+.temps {
+    color: rgb(0, 0, 0);
+    display: flex;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    justify-content: space-around;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
