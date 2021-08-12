@@ -12,7 +12,6 @@ router.get( '/', async ( req, res ) => {
 
         if( name ) {
             const razaFinded = allDogs.filter( elem => elem.name.toLowerCase().includes( name.toLowerCase() ))
-            console.log( razaFinded )
             if( razaFinded.length > 0 )
                 return res.status( 200 ).send( razaFinded )
             

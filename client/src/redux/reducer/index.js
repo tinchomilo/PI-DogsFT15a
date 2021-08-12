@@ -38,13 +38,6 @@ function rootReducer( state = initialState, action ) {
             return state;
 
         case ORDER_BY_NAME:
-            // buffer lo utlilizo para convertir a numero el mayor peso que puede tener un perro para poder hacer la comparacion
-            let buffer = state.dogsLoaded.map( elem => {
-                return {
-                    ...elem,
-                    weight: Number(elem.weight?.split('-')[1])
-                }
-                 })
             let sortedArr = action.payload === 'asc' ?
                 state.dogsLoaded.sort( function (a, b) {
                     if(a.name > b.name ){
@@ -66,20 +59,20 @@ function rootReducer( state = initialState, action ) {
                     return 0;
                 }) : 
                 action.payload === 'ascWeight' ?                    
-                buffer.sort( function (a, b) {
-                    if(a.weight > b.weight ){
+                state.dogsLoaded.sort( function (a, b) {
+                    if(Number(a.weight.split('-')[0]) > (Number(b.weight.split('-')[0] ))) {
                         return 1;
                     }
-                    if( b.weight > a.weight ){
+                    if(Number(b.weight.split('-')[0]) > (Number(a.weight.split('-')[0] ))) {
                         return -1;
                     }
                     return 0;
                 }) : 
-                buffer.sort( function (a, b) {
-                    if(a.weight > b.weight ){
+                state.dogsLoaded.sort( function (a, b) {
+                    if(Number(a.weight.split('-')[0]) > (Number(b.weight.split('-')[0] ))) {
                         return -1;
                     }
-                    if( b.weight > a.weight ){
+                    if(Number(b.weight.split('-')[0]) > (Number(a.weight.split('-')[0] ))) {
                         return 1;
                     }
                     return 0;

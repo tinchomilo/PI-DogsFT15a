@@ -8,8 +8,8 @@ export const addDog = ( { name, heightMin, heightMax, weightMin, weightMax, year
         try {
             await axios.post( 'http://localhost:3001/dogs/', {
                 name,
-                height: heightMin + ' - ' + heightMax + ' Kg',
-                weight: weightMin + ' - ' + weightMax + ' Cm',
+                height: heightMin + ' - ' + heightMax,
+                weight: weightMin + ' - ' + weightMax,
                 lifeSpan: yearsMin + ' - ' + yearsMax + ' years',
                 temperament
             })
