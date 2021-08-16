@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente card debe mostrar el componente correctamente 1`] = `
+<div
+  className="card"
+>
+  <h3>
+    Terry
+  </h3>
+  <Link
+    to="/detail/508"
+  >
+    <img
+      alt="imagen raza"
+      height="150"
+      src="https://localhost/imagenTerry.jpg"
+      width="150"
+    />
+    <div
+      className="names"
+    >
+      <p>
+        Temperamento: 
+        curious, 
+        playful, 
+      </p>
+    </div>
+  </Link>
+</div>
+`;
