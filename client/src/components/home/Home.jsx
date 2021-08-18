@@ -26,8 +26,11 @@ export const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [orden, setOrden] = useState('')
     const [dogsPerPage, setdogsPerPage] = useState(9)
+    // lo utilizo para saber cual es el ultimo dog de la pag
     const indexOfLastDog = currentPage * dogsPerPage;
+    //para asi saber cual va a ser el primero con el que empieza la segunda pagina
     const indexOfFirstDog = indexOfLastDog - dogsPerPage;
+    //sasabiendo cuales son los indices los utilizo con un slice para partir el array
     const currentDogs = dogsLoaded.slice( indexOfFirstDog, indexOfLastDog )
 
     const paginado = ( pageNumber ) => {

@@ -3,7 +3,7 @@ const axios = require( 'axios' );
 module.exports = async function getApiInfo() {
 
     const apiInfo = await axios.get( 'https://api.thedogapi.com/v1/breeds' )
-    const data = await apiInfo.data.map( elem => {
+    const data = apiInfo.data.map( elem => {
         return {
             name: elem.name,
             lifeSpan: elem.life_span,

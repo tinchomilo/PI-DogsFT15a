@@ -1,13 +1,19 @@
 .contenedor {
     align-items: center;
     display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100vh;
     flex-direction: column;
+    background-image: url(../resources/imgboton.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .view {
     align-items: center;
     background-color: #187795;
-    border-radius: 150px;
+    border-radius: 100px;
     color: #e8e9ee;
     display: flex;
     flex-direction: column;
@@ -50,6 +56,8 @@
 .btn{
   border-radius: 0.25rem;
   border: 1px solid transparent;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
   cursor: pointer;
   display: inline-block;
   font-size: 1rem;

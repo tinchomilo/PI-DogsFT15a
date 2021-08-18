@@ -18,6 +18,9 @@
     font-size: 40px;
     font-style: italic;
     font-weight: bold;
+    text-shadow: 1px 1px rgb(168, 168, 168);
+    border-radius: 10px;
+    opacity: 0.75;
     
 }
 
@@ -61,6 +64,8 @@
     border-color: #0d6efd;
     border-radius: 0.25rem;
     border: 1px solid transparent;  
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
     cursor: pointer;
     display: inline-block;
     font-size: 1rem;
@@ -87,5 +92,9 @@
     justify-content: space-around;
     margin-bottom: 0px;
     margin-top: 0px;
+}
+
+.temps p {
+    text-shadow: 1px 1px honeydew;
 }
 

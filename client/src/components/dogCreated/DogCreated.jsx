@@ -49,7 +49,7 @@ export const DogCreated = ( { history } ) => {
     const handleSubmit = ( e ) => {
         e.preventDefault()
         if( values.name && values.heightMin && values.heightMax && 
-            values.weightMin && values.weightMax && values.temperament) {
+            values.weightMin && values.weightMax && values.temperament.length) {
             dispatch( addDog( values ) )
             setErrors( false )
             setSucces( true )
@@ -78,10 +78,10 @@ export const DogCreated = ( { history } ) => {
                     onChange={ handleChange }
                     autoComplete='off'
                     />
-                    {
+                    {/* {
                         errors.name && 
                         <p className='error'>{ errors.name }</p>                        
-                    }
+                    } */}
                 </div>
                 <div>
                     <label>Altura min: </label>
